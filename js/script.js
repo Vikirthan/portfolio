@@ -37,20 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (achievementsGrid) {
-        // Clone for infinite scroll (double the content)
-        achievementsGrid.innerHTML += achievementsGrid.innerHTML;
+        // Check if mobile (<= 768px)
+        const isMobile = window.innerWidth <= 768;
 
-        startScroll();
+        if (!isMobile) {
+            // Desktop: Enable Infinite Scroll
+            // Clone for infinite scroll (double the content)
+            achievementsGrid.innerHTML += achievementsGrid.innerHTML;
 
-        // Pause on hover
-        achievementsGrid.addEventListener('mouseenter', stopScroll);
-        achievementsGrid.addEventListener('mouseleave', startScroll);
+            startScroll();
 
-        // Pause on touch (mobile)
-        achievementsGrid.addEventListener('touchstart', stopScroll);
-        achievementsGrid.addEventListener('touchmove', stopScroll); // Also stop on move
-        achievementsGrid.addEventListener('touchend', () => {
-            resumeTimeout = setTimeout(startScroll, 2000); // Resume after 2s
-        });
+            // Pause on hover
+            achievementsGrid.addEventListener('mouseenter', stopScroll);
+            achievementsGrid.addEventListener('mouseleave', startScroll);
+        }
+        // Mobile: Default CSS scrolling takes over (no script needed)
     }
 });

@@ -150,3 +150,28 @@
         max-width: 280px;
     }
 }
+
+/* Mobile: Show Scrollbar & Disable Infinite Scroll Styling */
+@media (max-width: 768px) {
+    .achievements-grid {
+        scrollbar-width: thin;
+        /* Firefox */
+        scrollbar-color: var(--primary-color) #222;
+        padding-bottom: 1rem;
+    }
+
+    .achievements-grid::-webkit-scrollbar {
+        display: block;
+        height: 6px;
+    }
+
+    .achievements-grid::-webkit-scrollbar-track {
+        background: #222;
+        border-radius: 3px;
+    }
+
+    .achievements-grid::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+        border-radius: 3px;
+    }
+}

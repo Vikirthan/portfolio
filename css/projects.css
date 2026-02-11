@@ -1,0 +1,289 @@
+/* Projects Section */
+.projects-section {
+    padding: 5rem 10%;
+    /* Darker background for contrast */
+    background-color: #050505;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.project-card {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+    border-color: var(--primary-color);
+}
+
+.project-gallery {
+    height: 200px;
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animation: Disperse and Arrange (Glitch Effect) */
+@keyframes disperse-arrange {
+    0% {
+        opacity: 0.1;
+        transform: scale(0.8);
+        text-shadow:
+            -100px 0 0 var(--primary-color),
+            100px 0 0 var(--secondary-color);
+        filter: blur(10px);
+    }
+
+    40% {
+        opacity: 0.8;
+        transform: scale(1.1);
+        text-shadow:
+            -20px -10px 5px var(--primary-color),
+            20px 10px 5px var(--secondary-color);
+        filter: blur(0);
+    }
+
+    60% {
+        text-shadow:
+            -5px 0 2px var(--primary-color),
+            5px 0 2px var(--secondary-color);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        text-shadow: 0 0 0 transparent;
+        filter: blur(0);
+    }
+}
+
+.project-icon-placeholder {
+    font-size: 5rem;
+    color: var(--primary-color);
+    /* Initial state: Arranged */
+    text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+/* Hover: Trigger Disperse -> Arrange */
+.project-card:hover .project-icon-placeholder {
+    animation: disperse-arrange 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    color: #fff;
+    /* Final glow after animation settles is handled by animation fill-mode 'both' mostly,
+       but we keep hover style for sustained glow if we remove animation re-trigger */
+    text-shadow: 0 0 20px var(--primary-color);
+}
+
+.project-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-gallery img {
+    transform: scale(1.05);
+}
+
+.gallery-overlay-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 2;
+}
+
+.project-gallery:hover .gallery-overlay-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.project-gallery::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-gallery:hover::after {
+    opacity: 1;
+}
+
+.project-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* Take remaining height */
+}
+
+.project-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin: 0 0 1rem 0;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.project-description {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.project-details h4 {
+    color: var(--secondary-color);
+    margin: 0.5rem 0 0.2rem 0;
+    font-size: 1rem;
+}
+
+.project-details p {
+    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* Project Link Buttons */
+.project-links {
+    margin-top: auto;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.project-link-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.project-link-icon i {
+    font-size: 1.2rem;
+}
+
+.project-link-icon:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #000;
+    transform: translateY(-3px) rotate(360deg);
+    box-shadow: 0 5px 15px rgba(0, 240, 255, 0.3);
+}
+
+.project-link-icon:nth-child(2):hover {
+    background: #0077b5;
+    /* LinkedIn Blue */
+    border-color: #0077b5;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Improved Project Details - List Style */
+.project-details-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    /* Increased spacing */
+    margin-bottom: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #ddd;
+    padding: 1rem;
+    /* More breathing room */
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.detail-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+    border-color: rgba(0, 240, 255, 0.3);
+}
+
+.detail-item i {
+    font-size: 1.2rem;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+/* Distinct Colors */
+.detail-item:nth-child(1) i {
+    color: #ff6b81;
+}
+
+/* Aim - Red/Pink */
+.detail-item:nth-child(2) i {
+    color: #feca57;
+}
+
+/* Objective - Yellow/Orange */
+.detail-item:nth-child(3) i {
+    color: #1dd1a1;
+}
+
+/* Outcome - Green */
+
+/* Tech Stack - Cyan/Blue */
+.detail-item:nth-child(4) i {
+    color: #4a69bd;
+}
+
+.detail-item strong {
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.5px;
+    margin-right: 5px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+/* End of Projects CSS */

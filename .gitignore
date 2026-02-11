@@ -1,0 +1,13 @@
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# IDE Settings
+.vscode/
+.idea/
+.DS_Store
+
+# Temporary Files
+*.log
+Thumbs.db

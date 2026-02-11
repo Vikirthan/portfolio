@@ -245,3 +245,30 @@ a {
         height: 250px;
     }
 }
+
+@media (max-width: 600px) {
+    .hero-section {
+        padding-top: 120px;
+        padding-bottom: 50px;
+        gap: 1.5rem;
+    }
+
+    .name {
+        font-size: 2.2rem;
+    }
+
+    .profile-photo {
+        width: 200px;
+        height: 200px;
+        border-width: 3px;
+    }
+
+    .quote {
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

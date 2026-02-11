@@ -84,3 +84,20 @@ strong {
     color: #fff;
     font-weight: normal;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 3rem 5%;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .about-content {
+        padding: 1.5rem;
+        font-size: 1rem;
+    }
+}

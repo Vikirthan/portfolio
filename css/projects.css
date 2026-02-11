@@ -214,6 +214,10 @@
 
 /* Responsive */
 @media (max-width: 600px) {
+    .projects-section {
+        padding: 3rem 5%;
+    }
+
     .projects-grid {
         grid-template-columns: 1fr;
     }

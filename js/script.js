@@ -14,12 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // Auto-Scroll for Achievements
     const achievementsGrid = document.querySelector('.achievements-grid');
-    let scrollInterval;
-    let scrollAmount = 0;
-    const scrollSpeed = 1; // Pixels per tick
-    const scrollDelay = 20; // Milliseconds (Smoother)
+    let resumeTimeout;
+
+    function stopScroll() {
+        clearInterval(scrollInterval);
+        clearTimeout(resumeTimeout);
+    }
 
     function startScroll() {
+        stopScroll(); // Ensure no duplicate intervals or pending resumes
         scrollInterval = setInterval(() => {
             if (achievementsGrid) {
                 achievementsGrid.scrollLeft += scrollSpeed;
@@ -31,10 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }, scrollDelay);
-    }
-
-    function stopScroll() {
-        clearInterval(scrollInterval);
     }
 
     if (achievementsGrid) {
@@ -49,8 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Pause on touch (mobile)
         achievementsGrid.addEventListener('touchstart', stopScroll);
+        achievementsGrid.addEventListener('touchmove', stopScroll); // Also stop on move
         achievementsGrid.addEventListener('touchend', () => {
-            setTimeout(startScroll, 2000); // Resume after 2s
+            resumeTimeout = setTimeout(startScroll, 2000); // Resume after 2s
         });
     }
 });

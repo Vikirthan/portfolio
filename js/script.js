@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Auto-Scroll for Achievements
     const achievementsGrid = document.querySelector('.achievements-grid');
     let resumeTimeout;
+    let scrollInterval;
+    const scrollSpeed = 1; // Pixels per interval
+    const scrollDelay = 20; // Milliseconds
 
     function stopScroll() {
         clearInterval(scrollInterval);

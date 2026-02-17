@@ -130,6 +130,7 @@ a {
     margin-bottom: 1rem;
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     /* Sharper glow for clarity */
     text-shadow: 0 0 5px rgba(0, 240, 255, 0.8), 0 0 15px rgba(0, 240, 255, 0.3);
@@ -199,6 +200,37 @@ a {
 .profile-photo:hover {
     transform: scale(1.05);
     box-shadow: 0 0 50px rgba(0, 240, 255, 0.5);
+}
+
+/* Footer Section */
+.footer {
+    background: #000;
+    padding: 2rem 0;
+    margin-top: 5rem;
+    text-align: center;
+    border-top: 1px solid var(--circuit-color);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
 }
 
 /* Responsive Design */
